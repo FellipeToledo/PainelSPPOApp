@@ -29,100 +29,131 @@ export class DashboardChartsData {
   }
 
   initMainChart(period: string = 'Month') {
-    const brandSuccess = getStyle('--cui-success') ?? '#4dbd74';
-    const brandInfo = getStyle('--cui-info') ?? '#20a8d8';
+
+    const brandIntersul = getStyle('--cui-warning') ?? '#ffc107';
+    const brandInternorte = getStyle('--cui-success') ?? '#198754';
+    const brandTranscarioca = getStyle('--cui-info') ?? '#0d6efd';
+    const brandSantacruz = getStyle('--cui-danger') ?? '#dc3545';
     const brandInfoBg = `rgba(${getStyle('--cui-info-rgb')}, .1)`
-    const brandDanger = getStyle('--cui-danger') ?? '#f86c6b';
+
 
     // mainChart
     this.mainChart['elements'] = period === 'Month' ? 12 : 27;
-    this.mainChart['Data1'] = [];
-    this.mainChart['Data2'] = [];
-    this.mainChart['Data3'] = [];
+    this.mainChart['Intersul'] = [];
+    this.mainChart['Internorte'] = [];
+    this.mainChart['Transcarioca'] = [];
+    this.mainChart['Santacruz'] = [];
 
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChart['elements']; i++) {
-      this.mainChart['Data1'].push(this.random(50, 240));
-      this.mainChart['Data2'].push(this.random(20, 160));
-      this.mainChart['Data3'].push(65);
+      this.mainChart['Intersul'].push(this.random(1689, 1000));
+      this.mainChart['Internorte'].push(this.random(3545, 160));
+      this.mainChart['Transcarioca'].push(this.random(5878, 160));
+      this.mainChart['Santacruz'].push(this.random(6525, 1588));
     }
 
     let labels: string[] = [];
     if (period === 'Month') {
       labels = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
       ];
-    } else {
+    } else if (period === 'Week') {
       /* tslint:disable:max-line-length */
       const week = [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday'
+        'Segunda',
+        'Terça',
+        'Quarta',
+        'Quinta',
+        'Sexta',
+        'Sábado',
+        'Domingo'
       ];
-      labels = week.concat(week, week, week);
+      labels = week.concat();
+    } else if (period === 'Year') {
+      const year = [
+        '2018',
+        '2019',
+        '2020',
+        '2021',
+        '2022',
+        '2023',
+        '2024',
+      ];
+      labels = year.concat();
     }
-
     const colors = [
       {
-        // brandInfo
+        // Intersul
         backgroundColor: brandInfoBg,
-        borderColor: brandInfo,
-        pointHoverBackgroundColor: brandInfo,
-        borderWidth: 2,
-        fill: true
+        borderColor: brandIntersul,
+        pointHoverBackgroundColor: brandIntersul,
+        borderWidth: 3,
+        fill: false
       },
       {
-        // brandSuccess
-        backgroundColor: 'transparent',
-        borderColor: brandSuccess || '#4dbd74',
-        pointHoverBackgroundColor: '#fff'
+        // Internorte
+        backgroundColor: brandInfoBg,
+        borderColor: brandInternorte,
+        pointHoverBackgroundColor: brandInternorte,
+        borderWidth: 3,
+        fill: false
       },
       {
-        // brandDanger
-        backgroundColor: 'transparent',
-        borderColor: brandDanger || '#f86c6b',
-        pointHoverBackgroundColor: brandDanger,
-        borderWidth: 1,
-        borderDash: [8, 5]
-      }
+        // Transcarioca
+        backgroundColor: brandInfoBg,
+        borderColor: brandTranscarioca,
+        pointHoverBackgroundColor: brandTranscarioca,
+        borderWidth: 3,
+        fill: false
+      },
+      {
+        // Santacruz
+        backgroundColor: brandInfoBg,
+        borderColor: brandSantacruz,
+        pointHoverBackgroundColor: brandSantacruz,
+        borderWidth: 3,
+        borderDash: [8, 5],
+        fill: false
+      },
     ];
 
     const datasets: ChartDataset[] = [
       {
-        data: this.mainChart['Data1'],
-        label: 'Current',
+        data: this.mainChart['Intersul'],
+        label: 'Intersul',
         ...colors[0]
       },
       {
-        data: this.mainChart['Data2'],
-        label: 'Previous',
+        data: this.mainChart['Internorte'],
+        label: 'Internorte',
         ...colors[1]
       },
       {
-        data: this.mainChart['Data3'],
-        label: 'BEP',
+        data: this.mainChart['Transcarioca'],
+        label: 'Transcarioca',
         ...colors[2]
+      },
+      {
+        data: this.mainChart['Santacruz'],
+        label: 'Santacruz',
+        ...colors[3]
       }
     ];
 
     const plugins: DeepPartial<PluginOptionsByType<any>> = {
       legend: {
-        display: false
+        display: true
       },
       tooltip: {
         callbacks: {
@@ -179,12 +210,12 @@ export class DashboardChartsData {
         grid: {
           color: colorBorderTranslucent
         },
-        max: 250,
+        max: 7000,
         beginAtZero: true,
         ticks: {
           color: colorBody,
-          maxTicksLimit: 5,
-          stepSize: Math.ceil(250 / 5)
+          maxTicksLimit: 10,
+          stepSize: Math.ceil(10/ 1)
         }
       }
     };
