@@ -1,6 +1,30 @@
+
+
 <c-card class="mb-4">
-   
-    <c-card-body>
-      <div id="map-container" class="map-container"></div>
-    </c-card-body>
-  </c-card>
+  <c-card-header>
+    <form cForm class="row g-3">
+
+      <c-col [md]="6">
+    
+      </c-col>
+      <c-col [md]="4">
+    
+      </c-col>
+      <c-col [md]="2">
+        <c-input-group >
+          <input aria-describedby="button-addon2"
+                 aria-label="Serviço"
+                 cFormControl
+                 placeholder="Serviço"
+          />
+          <button cButton color="secondary" id="button-addon2" type="button" variant="outline">
+            Button
+          </button>
+        </c-input-group>
+      </c-col>
+    </form>
+  </c-card-header>
+  <c-card-body>
+    <div id="map-container" class="map-container"></div>
+  </c-card-body>
+</c-card>

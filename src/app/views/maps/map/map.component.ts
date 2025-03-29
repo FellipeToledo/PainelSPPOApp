@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import { CardComponent, CardHeaderComponent, CardBodyComponent } from '@coreui/angular';
+import { CardComponent, CardHeaderComponent, CardBodyComponent, ButtonDirective, FormControlDirective, InputGroupComponent, TextColorDirective, ColComponent } from '@coreui/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-map',
-  imports: [CardComponent, CardHeaderComponent, CardBodyComponent],
+  imports: [ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, InputGroupComponent, FormControlDirective, ButtonDirective, ReactiveFormsModule],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
