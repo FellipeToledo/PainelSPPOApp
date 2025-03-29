@@ -8,19 +8,16 @@ export const navItems: INavData[] = [
 
   },
   {
-    title: true,
-    name: 'Dados'
-  },
-  {
-    name: 'Mapa',
-    url: '/theme/map',
-    iconComponent: { name: 'cil-map' }
-  },
-  {
-    name: 'Typography',
-    url: '/theme/typography',
-    linkProps: { fragment: 'headings' },
-    iconComponent: { name: 'cil-pencil' }
+    name: 'Map',
+    url: '/map',
+    iconComponent: { name: 'cil-map' },
+    children: [
+      {
+        name: 'Operational',
+        url: '/maps/Operational',
+        icon: 'cil-location-pin'
+      }
+    ]
   },
   {
     name: 'Components',
