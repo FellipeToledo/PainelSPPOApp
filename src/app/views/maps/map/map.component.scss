@@ -1,12 +1,47 @@
 .map-container {
-    height: 75vh;
-    min-height: 600px;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  height: 75vh;
+  min-height: 600px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+
+  .leaflet-marker-icon,
+  .leaflet-marker-shadow {
+    display: block;
+  }
+
+  .bus-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transform: translate(-12px, -12px);
+  }
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   
-    .leaflet-marker-icon,
-    .leaflet-marker-shadow {
-      display: block;
+  span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    
+    &.connected {
+      background-color: #28a745;
+    }
+    
+    &.disconnected {
+      background-color: #dc3545;
     }
   }
+}
